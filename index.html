@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Week2 Task2 ToDo App</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1 class="text-title">T O D O</h1>
+      </header>
+      <div class="container-input">
+        <div class="wraper">
+          <button id="btn-submit" class="btn" onclick="addTodo()"><img src="images/icon-check.svg" alt="check" /></button>
+        </div>
+        <input id="input-task" class="input" type="text" placeholder="Create a New Task" required />
+      </div>
+      <div id="show-todo" class="card"></div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -136,6 +136,7 @@ img {
 }
 .todo-name {
   font-size: 1rem;
+  flex-grow: 1;
   color: var(--LightGrayishBlue);
   padding-left: 20px;
   padding-top: 15px;
@@ -151,20 +152,35 @@ img {
 .done .btn:hover img {
   opacity: 1;
 }
-
-.delete {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
+/* undo */
+.undo img {
+  filter: invert(100%) contrast(50%);
 }
+.undo .btn {
+  border: none;
+  opacity: 0;
+}
+
+/* delete */
+.delete,
+.undo {
+  width: 50px;
+}
+
 .delete .btn {
   border: none;
   opacity: 0;
 }
+.delete img {
+  filter: invert(100%);
+}
 .todo:hover .delete .btn {
   opacity: 1;
 }
+.todo:hover .undo .btn {
+  opacity: 1;
+}
+
 /* AFTER SUBMIT */
 .done-text {
   text-decoration: line-through;
@@ -174,6 +190,9 @@ img {
 .done-btn img {
   opacity: 1;
   background-image: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+.display {
+  display: none;
 }
 /* * {
   border: 1px solid blue;

@@ -8,23 +8,21 @@ class Todos {
     this.id = id;
     this.taskName = taskName;
     this.isDone = isDone;
+    this.doneBtn = '';
+    this.doneText = '';
+    this.display = '';
   }
   //   method
   renderElements() {
-    let doneBtn = '';
-    let doneText = '';
-
-    if (this.isDone) {
-      doneBtn = 'done-btn';
-      doneText = 'done-text';
-    }
-
     return `
       <div class="todo">
-        <div class="wraper done">
-          <button class="btn ${doneBtn}" onclick="doneTodo(${this.id})"><img src="images/icon-check.svg" alt="check-btn" /></button>
+        <div class="wraper done ">
+          <button class="btn ${this.doneBtn}" onclick="doneTodo(${this.id})"><img src="images/icon-check.svg" alt="check-btn" /></button>
         </div>
-        <p class="todo-name ${doneText}">${this.taskName}</p>
+        <p class="todo-name ${this.doneText}">${this.taskName}</p>
+        <div class="wraper undo ${this.display}">
+          <button class="btn" onclick="undoTodo(${this.id})"><img src="images/icon-undo.svg" alt="undo-btn" /></button>
+        </div>
         <div class="wraper delete">
           <button class="btn" onclick="removeTodo(${this.id})"><img src="images/icon-cross.svg" alt="delete-btn" /></button>
         </div>
@@ -58,7 +56,15 @@ function removeTodo(id) {
 function doneTodo(id) {
   for (let todo of todos) {
     if (id == todo.id) {
-      todo.isDone = !todo.isDone;
+      todo.isDone = true;
+    }
+  }
+  renderTodo();
+}
+function undoTodo(id) {
+  for (let todo of todos) {
+    if (id == todo.id) {
+      todo.isDone = false;
     }
   }
   renderTodo();
@@ -75,6 +81,16 @@ function renderTodo() {
         `;
   } else {
     for (let todo of todos) {
+      if (todo.isDone) {
+        todo.doneBtn = 'done-btn';
+        todo.doneText = 'done-text';
+        todo.display = '';
+      } else {
+        todo.doneBtn = '';
+        todo.doneText = '';
+        todo.display = 'display';
+      }
+
       HTMLElements += todo.renderElements();
     }
   }

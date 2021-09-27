@@ -4,13 +4,13 @@ const inputTask = document.getElementById('input-task');
 const todos = [];
 
 class Todos {
-  constructor(id, taskName, isDone) {
+  constructor(id, taskName, isDone, doneBtn, doneText, display) {
     this.id = id;
     this.taskName = taskName;
     this.isDone = isDone;
-    this.doneBtn = '';
-    this.doneText = '';
-    this.display = '';
+    this.doneBtn = doneBtn;
+    this.doneText = doneText;
+    this.display = display;
   }
   //   method
   renderElements() {
@@ -37,7 +37,7 @@ function addTodo() {
     return;
   }
 
-  const todo = new Todos(Date.now(), inputTask.value, false);
+  const todo = new Todos(Date.now(), inputTask.value, false, '', '', '');
 
   todos.push(todo);
   inputTask.value = '';
